@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox</title>
+    <style>
+        div {
+            border: 2px dotted black;
+        }
+
+        div div {
+            border-radius: 3px;
+            background-color: #A2CBFA;
+            border: 1px solid #4390E1;
+            box-sizing: border-box;
+            box-shadow: 0 2px 2px rgba(0, 90, 250, 0.05), 0 4px 4px rgba(0, 90, 250, 0.05), 0 8px 8px rgba(0, 90, 250, 0.05), 0 16px 16px rgba(0, 90, 250, 0.05);
+        }
+
+        .container {
+            display: flex;
+            flex-flow: column wrap;
+            align-content: space-between;
+            height: 580px;
+        }
+
+        .item {
+            width: 32%;
+            margin-bottom: 2%;
+            /* (100-32*3)/2 */
+        }
+
+        /* Re-order items into rows */
+        .item:nth-child(3n+1) {
+            order: 1;
+        }
+
+        .item:nth-child(3n+2) {
+            order: 2;
+        }
+
+        .item:nth-child(3n) {
+            order: 3;
+        }
+
+        /* Force new columns */
+        .container::before,
+        .container::after {
+            content: "";
+            flex-basis: 100%;
+            width: 0;
+            order: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="height:200px" class="item">1</div>
+        <div style="height:250px" class="item">2</div>
+        <div style="height:225px" class="item">3</div>
+        <div style="height:100px" class="item">4</div>
+        <div style="height:100px" class="item">5</div>
+        <div style="height:125px" class="item">6</div>
+        <div style="height:100px" class="item">7</div>
+        <div style="height:75px" class="item">8</div>
+        <div style="height:100px" class="item">9</div>
+        <div style="height:100px" class="item">10</div>
+    </div>
+</body>
+
+</html>
